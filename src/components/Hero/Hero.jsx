@@ -96,7 +96,7 @@ const Hero = () => {
   return (
     <div className="hero-container" ref={containerRef}>
       <div className="hero-content" ref={textRef}>
-        <h1>Yonatan!!! THE KING</h1>
+        <h1>Yonatan</h1>
         <h2>Software Developer</h2>
       </div>
 
