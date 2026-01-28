@@ -1,0 +1,130 @@
+@use "../../styles/variables" as *;
+
+.project-section {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+
+    .project-content {
+        width: 100%;
+        max-width: 1400px;
+        display: grid;
+        grid-template-columns: 1fr 1.5fr 1fr; // Title, Image, Info
+        gap: 2rem;
+        align-items: center;
+        opacity: 0; // Initial state for GSAP
+
+        @include mobile {
+            grid-template-columns: 1fr;
+            grid-template-rows: auto auto auto;
+            text-align: center;
+            gap: 1rem;
+        }
+
+        .project-title {
+            font-family: $secondary-heading-font;
+            font-size: 5rem;
+            line-height: 0.9;
+            color: $carbon-black;
+            word-wrap: break-word;
+            z-index: 10;
+            position: relative;
+            pointer-events: none; 
+
+            @include mobile {
+                font-size: 3rem;
+                text-align: center;
+                order: 1;
+                margin-right: 0; 
+            }
+        }
+
+        .project-image-container {
+            width: 100%;
+            height: 60vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+
+            @include mobile {
+                height: 40vh;
+                order: 2;
+            }
+
+            .image-placeholder {
+                width: 100%;
+                height: 100%;
+                background-color: $charcoal-brown;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: $floral-white;
+                font-size: 1.5rem;
+                object-fit: cover;
+                opacity: 0.8
+            }
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        .project-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: flex-start;
+            height: 100%;
+            padding-bottom: 2rem;
+
+            @include mobile {
+                align-items: center;
+                text-align: center;
+                padding-bottom: 0;
+                order: 3;
+            }
+
+            .arrow-icon {
+                font-size: 3rem;
+                color: $carbon-black;
+                margin-bottom: 1rem;
+                font-weight: 300;
+            }
+
+            .subtitle {
+                font-family: $primary-font;
+                font-size: 1.5rem;
+                font-weight: 500;
+                color: $carbon-black;
+                margin-bottom: 1rem;
+            }
+
+            .description {
+                font-family: $primary-font;
+                font-size: 1rem;
+                line-height: 1.5;
+                color: $charcoal-brown;
+                max-width: 300px;
+            }
+
+            .meta {
+                margin-top: 2rem;
+                font-size: 0.9rem;
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+                border-top: 1px solid $dust-grey;
+                padding-top: 0.5rem;
+                color: $charcoal-brown;
+            }
+        }
+    }
+}

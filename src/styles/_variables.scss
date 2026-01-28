@@ -1,0 +1,24 @@
+$floral-white: #fffcf2;
+$dust-grey: #ccc5b9;
+$charcoal-brown: #403d39;
+$carbon-black: #242424;
+$royal-blue: #f5fdff;
+$royal-blue-light: #C26125;
+$background-color: #ffffff;
+
+$primary-font: "Rubik-Regular";
+$heading-font: "Rubik-Bold";
+$secondary-heading-font: "Rubik-Light";
+
+// Mixins for responsiveness
+@mixin mobile {
+    @media (max-width: 768px) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (max-width: 1024px) {
+        @content;
+    }
+}

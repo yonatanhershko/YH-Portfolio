@@ -1,0 +1,96 @@
+@use "../../styles/variables" as *;
+
+.hero-container {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $royal-blue; // Matches current app bg
+
+    .hero-content {
+        position: relative;
+        z-index: 10;
+        text-align: center;
+
+        h1 {
+            font-size: 8rem;
+            margin: 0;
+            line-height: 1;
+            color: $carbon-black;
+            white-space: nowrap;
+
+            @include mobile {
+                font-size: 3.5rem;
+                white-space: normal;
+            }
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-top: 10px;
+            color: $charcoal-brown;
+            @include mobile {
+                font-size: 1.2rem;
+            }
+        }
+    }
+
+    .floating-item {
+        position: absolute;
+        width: 200px;
+        height: 250px;
+        background-color: $dust-grey;
+        border: 2px solid $charcoal-brown;
+        border-radius: 12px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0.8;
+        z-index: 1;
+
+        @include mobile {
+            width: 100px;
+            height: 120px;
+        }
+
+        // Default placements - will be overridden/tweaked by inline styles or specific classes
+        &.item-1 {
+            top: 15%;
+            left: 15%;
+        }
+        &.item-2 {
+            top: 10%;
+            right: 20%;
+            
+        }
+        &.item-3 {
+            bottom: 20%;
+            left: 20%;
+        }
+        &.item-4 {
+            bottom: 15%;
+            right: 10%;
+
+            @include mobile {
+                display: none;
+            }
+        }
+        &.item-5 {
+            top: 50%;
+            left: 5%;
+            transform: translateY(-50%);
+
+            @include mobile {
+                display: none;
+            }
+        }
+        &.item-6 {
+            top: 70%;
+            right: 35%;
+
+        }
+    }
+}
