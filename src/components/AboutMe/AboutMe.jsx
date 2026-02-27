@@ -5,7 +5,7 @@ import './AboutMe.scss';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const AboutMe = () => {
+const AboutMe = ({ id }) => {
     const sectionRef = useRef(null);
     const imageRef = useRef(null);
     const textRef = useRef(null);
@@ -25,11 +25,10 @@ const AboutMe = () => {
                         trigger: section,
                         start: "top 70%", 
                         end: "top 30%",
-                        scrub: 1.5, // Smooth scrubbing
+                        scrub: 1.5, 
                     }
                 });
 
-                // Image moves to right with fade in
                 tl.fromTo(image, 
                     { x: -100, opacity: 0 }, 
                     { x: 0, opacity: 1, duration: 1.5 }
@@ -43,9 +42,7 @@ const AboutMe = () => {
                 );
             });
             
-            // Mobile - Ensure visibility without animation triggers if needed, 
-            // though CSS !important overrides handle it effectively too.
-            // We can just leave mobile purely to CSS overrides or setup a set state here.
+            // Mobile without animation
             mm.add("(max-width: 768px)", () => {
                  gsap.set([image, text], { clearProps: "all" });
             });
@@ -56,10 +53,9 @@ const AboutMe = () => {
     }, []);
 
     return (
-        <section className="about-me-section" ref={sectionRef}>
+        <section className="about-me-section" ref={sectionRef} id={id}>
             <div className="about-content">
                 <div className="image-container" ref={imageRef}>
-                    {/* Placeholder div for now */}
                     Image Placeholder
                 </div>
                 <div className="text-container" ref={textRef}>

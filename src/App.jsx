@@ -1,20 +1,19 @@
-import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
 import GlobalStyle from "./components/GlobalStyle/GlobalStyle";
 import ScrollSection from "./components/ScrollSection/ScrollSection";
 import Hero from "./components/Hero/Hero";
 import AboutMe from "./components/AboutMe/AboutMe";
 import "./styles/App.scss";
-//add three.js 
+import Contact from "./components/Contact/Contact";
+import Header from "./components/Header/Header";
 
 function App() {
-  // logic moved to Hero component
 
   return (
     <GlobalStyle>
       <div className="app-container">
-        <Hero />
-        <AboutMe />
+        <Header />
+        <Hero id="hero" />
+        <AboutMe id="about" />
 
         <section id="portfolio-section">
              <ScrollSection 
@@ -41,6 +40,8 @@ function App() {
                 year="2025"
              />
         </section>
+
+        <Contact id="contact"/>
       </div>
     </GlobalStyle>
   );

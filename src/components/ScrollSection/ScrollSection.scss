@@ -1,22 +1,20 @@
 @use "../../styles/variables" as *;
 
+
 .project-section {
     width: 100%;
     min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     padding: 2rem;
+    margin-top: 6rem;
     position: relative;
 
     .project-content {
         width: 100%;
         max-width: 1400px;
         display: grid;
-        grid-template-columns: 1.5fr 1fr; // Image+Title, Info
+        grid-template-columns: 1.5fr 1fr; 
         gap: 2rem;
         align-items: center;
-        opacity: 0; // Initial state for GSAP
 
         @include mobile {
             grid-template-columns: 1fr;
@@ -36,8 +34,8 @@
             position: absolute;
             left: 4%;
             top: 30%;
-            transform: translate(-50%, -50%); // Centered exactly at 50% X/Y
-            width: 50%; // Ensure text wraps reasonably if very long
+            transform: translate(-50%, -50%); 
+            width: 50%; 
             text-align: start;
 
             @include mobile {
@@ -132,3 +130,4 @@
         }
     }
 }
+

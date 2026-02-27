@@ -8,34 +8,3 @@
     align-items: center;
 }
 
-.hero {
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    background-color: $floral-white;
-    padding: 0 20px;
-
-    h1 {
-        font-size: 82px;
-        margin-bottom: 1rem;
-        color: $carbon-black;
-        text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-
-        @include mobile {
-            font-size: 3rem;
-        }
-    }
-
-    h2 {
-        font-size: 2rem;
-        color: $charcoal-brown;
-
-        @include mobile {
-            font-size: 1.5rem;
-        }
-    }
-}

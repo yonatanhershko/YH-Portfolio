@@ -20,6 +20,7 @@ const ScrollSection = ({ title, subtitle, description, location, year, imageSrc 
     // Ensure parent is visible if SCSS has it hidden
     gsap.set(contentRef.current, { opacity: 1 });
 
+    // Animation Timeline
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: section,
