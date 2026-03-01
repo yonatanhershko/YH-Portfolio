@@ -11,6 +11,7 @@ export default function Header() {
     const [activeSection, setActiveSection] = useState("hero");
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const [isDarkBg, setIsDarkBg] = useState(false);
     const isManualScroll = useRef(false);
 
     const sections = [
@@ -25,6 +26,7 @@ export default function Header() {
         if (element) {
             isManualScroll.current = true;
             setActiveSection(id);
+            setIsDarkBg(id === "about");
             element.scrollIntoView({ behavior: "smooth" });
             setIsMenuOpen(false);
 
@@ -34,6 +36,7 @@ export default function Header() {
                 ease: "power2.inOut",
                 onComplete: () => {
                     isManualScroll.current = false;
+                    ScrollTrigger.refresh();
                 },
             });
         }
@@ -69,13 +72,24 @@ export default function Header() {
                     },
                 });
             });
+
+            // Separate trigger for header color on dark sections
+            ScrollTrigger.create({
+                trigger: "#about",
+                start: "top top",
+                end: "bottom top",
+                onEnter: () => setIsDarkBg(true),
+                onLeave: () => setIsDarkBg(false),
+                onEnterBack: () => setIsDarkBg(true),
+                onLeaveBack: () => setIsDarkBg(false),
+            });
         });
 
         return () => ctx.revert();
     }, []);
 
     return (
-        <header className={`header-container ${scrolled ? "scrolled" : ""}`}>
+        <header className={`header-container ${scrolled ? "scrolled" : ""} ${isDarkBg ? "dark-section" : ""}`}>
             <div className="logo" onClick={() => scrollToSection("hero")}>
                 YH
             </div>

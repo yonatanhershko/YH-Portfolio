@@ -1,6 +1,8 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import me from '../../assets/imgs&svg/me.png';
+
 import './AboutMe.scss';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -56,7 +58,7 @@ const AboutMe = ({ id }) => {
         <section className="about-me-section" ref={sectionRef} id={id}>
             <div className="about-content">
                 <div className="image-container" ref={imageRef}>
-                    Image Placeholder
+                    <img src={me} alt="Me" />
                 </div>
                 <div className="text-container" ref={textRef}>
                     <h2>hi, I'm yonatan</h2>

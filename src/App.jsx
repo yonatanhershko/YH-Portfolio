@@ -5,6 +5,9 @@ import AboutMe from "./components/AboutMe/AboutMe";
 import "./styles/App.scss";
 import Contact from "./components/Contact/Contact";
 import Header from "./components/Header/Header";
+import jooba from './assets/imgs&svg/jooba.png';
+import k8sApp from './assets/imgs&svg/K8Sapp.png';
+import shikom from './assets/imgs&svg/shikom.png';
 
 function App() {
 
@@ -17,27 +20,27 @@ function App() {
 
         <section id="portfolio-section">
              <ScrollSection 
-                title="Black Star Ville" 
-                subtitle="Conexión Cósmica"
-                description="Villa Estrella Negra fusiona historia y elegancia en una joya arquitectónica donde la distribución de los espacios refleja la transformación."
-                location="Sayulita, MX"
+                title="Jooba AI" 
+                subtitle="Full Stack Engineer"
+                description="Former Full Stack Engineer at Jooba AI, developed scalable, high-performance solutions to create an amazing app."
                 year="2024"
+                imageSrc={jooba}
              />
              
              <ScrollSection 
-                title="Urban Oasis" 
-                subtitle="Sustainable Living"
-                description="A modern approach to urban living, seamlessly blending green spaces with concrete structures for a breathable city experience."
-                location="Tel Aviv, IL"
-                year="2023"
-             />
-             
-             <ScrollSection 
-                title="Neon Dreams" 
-                subtitle="Nightlife Reimagined"
-                description="An immersive light installation that transforms ordinary streets into a vibrant, pulsating canvas of color and motion."
-                location="Tokyo, JP"
+                title="K8s Todo List" 
+                subtitle="Cloud DevOps & Full Stack"
+                description="Todo web app deployed to the cloud using Docker, Kubernetes, and Fly.io, featuring a React frontend with Nginx reverse proxy and a Node.js + Express backend."
                 year="2025"
+                imageSrc={k8sApp}
+             />
+             
+             <ScrollSection 
+                title="IMOD Rehabilitation" 
+                subtitle="Frontend Developer"
+                description="Worked on a large-scale governmental platform for Israel's Ministry of Defense – Rehabilitation Department, building and maintaining frontend components with Next.js and TypeScript."
+                year="2025"
+                imageSrc={shikom}
              />
         </section>
 

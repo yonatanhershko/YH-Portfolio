@@ -5,6 +5,7 @@ import linkedinIcon from "../../assets/imgs&svg/linkedin.svg";
 import emailIcon from "../../assets/imgs&svg/email.svg";
 import arrowIcon from "../../assets/imgs&svg/arrow.svg";
 import gsap from "gsap";
+import me2 from '../../assets/imgs&svg/me2.png';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -101,7 +102,10 @@ export default function Contact({ id }) {
                 ref={contentRef}
                 style={{ opacity: 0, transform: "translateY(20px)" }}
             >
-                <h2 className="contact-title">Lets talk</h2>
+                <div className="contact-header">
+                    <img src={me2} alt="Me" />
+                    <h2 className="contact-title">Lets talk</h2>
+                </div>
                 <div className="social-links-container">
                     {socialLinks.map((social) => (
                         <a
@@ -129,6 +133,9 @@ export default function Contact({ id }) {
                         </a>
                     ))}
                 </div>
+                    <div className="footer-copyright">
+                &copy; {new Date().getFullYear()} Yonatan Hershko. All rights reserved.
+            </div>
             </div>
         </section>
     );

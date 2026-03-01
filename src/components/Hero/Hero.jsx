@@ -1,7 +1,11 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import arrowIcon from '../../assets/imgs&svg/arrow.svg';
+import walletApp from '../../assets/imgs&svg/walletApp.png';
+import shikom from '../../assets/imgs&svg/shikom.png';
+import k8sApp from '../../assets/imgs&svg/K8Sapp.png';
+import jooba from '../../assets/imgs&svg/jooba.png';
+import heyDay from '../../assets/imgs&svg/HeyDay.png';
 
 import "./Hero.scss";
 
@@ -91,13 +95,12 @@ const Hero = ({ id }) => {
         <h2>Software Developer</h2>
       </div>
 
-      {/* Floating Image Placeholders */}
-      <img src={arrowIcon} className="floating-item item-1" ref={addToRefs} />
-      <div className="floating-item item-2" ref={addToRefs}>Img 2</div>
-      <div className="floating-item item-3" ref={addToRefs}>Img 3</div>
-      <div className="floating-item item-4" ref={addToRefs}>Img 4</div>
-      <div className="floating-item item-5" ref={addToRefs}>Img 5</div>
-      <div className="floating-item item-6" ref={addToRefs}>Img 6</div>
+      {/* Floating Project Images */}
+      <div className="floating-item item-1" ref={addToRefs}><img src={walletApp} alt="Wallet App" /></div>
+      <div className="floating-item item-2" ref={addToRefs}><img src={jooba} alt="Jooba" /></div>
+      <div className="floating-item item-3" ref={addToRefs}><img src={shikom} alt="Shikom" /></div>
+      <div className="floating-item item-4" ref={addToRefs}><img src={k8sApp} alt="K8S App" /></div>
+      <div className="floating-item item-6" ref={addToRefs}><img src={heyDay} alt="HeyDay" /></div>
     </div>
   );
 };

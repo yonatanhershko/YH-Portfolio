@@ -6,7 +6,7 @@ import './ScrollSection.scss';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const ScrollSection = ({ title, subtitle, description, location, year, imageSrc }) => {
+const ScrollSection = ({ title, subtitle, description, year, imageSrc }) => {
   const sectionRef = useRef(null);
   const contentRef = useRef(null);
   const titleRef = useRef(null);
@@ -66,7 +66,7 @@ const ScrollSection = ({ title, subtitle, description, location, year, imageSrc 
         {/* Image Center */}
         <div className="project-image-container" ref={imageContainerRef}>
             {imageSrc ? (
-                 <img src={imageSrc} alt={title} ref={imageRef} style={{opacity: 0.8}} />
+                 <img src={imageSrc} alt={title} ref={imageRef}/>
             ) : (
                 <div className="image-placeholder" ref={imageRef}>
                 </div>
@@ -79,7 +79,6 @@ const ScrollSection = ({ title, subtitle, description, location, year, imageSrc 
              <h3 className="subtitle">{subtitle}</h3>
              <p className="description">{description}</p>
              <div className="meta">
-                <span>{location}</span>
                 <span>{year}</span>
              </div>
         </div>
