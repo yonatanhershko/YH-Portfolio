@@ -132,6 +132,36 @@ const ProjectPage = ({ projects }) => {
                 </div>
                 <h1 className="hero-title">{project.title}</h1>
                 <p className="hero-subtitle">{project.subtitle}</p>
+
+                {(project.githubUrl || project.liveUrl || project.liveLabel) && (
+                    <div className="project-links">
+                        {project.githubUrl && (
+                            <a
+                                href={project.githubUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="project-link github-link"
+                            >
+                                View Code
+                            </a>
+                        )}
+                        {project.liveUrl && (
+                            <a
+                                href={project.liveUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="project-link live-link"
+                            >
+                                Live App
+                            </a>
+                        )}
+                        {project.liveLabel && !project.liveUrl && (
+                            <span className="project-link coming-soon-link">
+                                {project.liveLabel}
+                            </span>
+                        )}
+                    </div>
+                )}
             </div>
 
             {/* Lead with Outcome */}
@@ -174,13 +204,6 @@ const ProjectPage = ({ projects }) => {
                     </div>
                 </div>
             )}
-
-            {/* Footer CTA */}
-            <div className="project-footer" ref={addToStoryCards}>
-                <button className="footer-back-btn" onClick={() => navigate('/')}>
-                    ← Back to all projects
-                </button>
-            </div>
         </div>
     );
 };

@@ -105,6 +105,72 @@
                 font-size: 1.1rem;
             }
         }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+
+            @include mobile {
+                flex-direction: column;
+                gap: 0.8rem;
+                width: 100%;
+            }
+
+            .project-link {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                padding: 12px 28px;
+                border-radius: 30px;
+                font-family: $primary-font;
+                font-size: 0.9rem;
+                font-weight: 600;
+                text-decoration: none;
+                letter-spacing: 0.3px;
+                transition: all 0.3s ease;
+                cursor: pointer;
+
+                @include mobile {
+                    justify-content: center;
+                    padding: 12px 24px;
+                    font-size: 0.85rem;
+                }
+            }
+
+            .github-link {
+                border: 1.5px solid $third-color;
+                color: $third-color;
+                background: transparent;
+
+                &:hover {
+                    background-color: $third-color;
+                    color: $secondary-color;
+                    transform: translateY(-2px);
+                    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+                }
+            }
+
+            .live-link {
+                border: 1.5px solid $main-color;
+                color: $third-color;
+                background-color: $main-color;
+
+                &:hover {
+                    transform: translateY(-2px);
+                    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+                    opacity: 0.9;
+                }
+            }
+
+            .coming-soon-link {
+                border: 1.5px solid rgba($third-color, 0.2);
+                color: $third-color;
+                background: transparent;
+                opacity: 0.5;
+                cursor: default;
+            }
+        }
     }
 
     // ─── Outcome (Lead) ─────────────────────────────────
@@ -295,32 +361,4 @@
         }
     }
 
-    // ─── Footer ─────────────────────────────────────────
-    .project-footer {
-        padding: 4rem;
-        border-top: 1px solid rgba($third-color, 0.1);
-        text-align: center;
-        opacity: 0;
-
-        @include mobile {
-            padding: 2.5rem 1.5rem;
-        }
-
-        .footer-back-btn {
-            background: none;
-            border: none;
-            font-family: $primary-font;
-            font-size: 1rem;
-            color: $main-color;
-            cursor: pointer;
-            padding: 12px 28px;
-            transition: all 0.3s ease;
-            letter-spacing: 0.5px;
-
-            &:hover {
-                color: $third-color;
-                transform: translateX(-5px);
-            }
-        }
-    }
 }

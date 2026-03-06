@@ -9,6 +9,7 @@ import Contact from "./components/Contact/Contact";
 import Header from "./components/Header/Header";
 import ProjectPage from "./components/ProjectPage/ProjectPage";
 
+
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 function ScrollToTop() {
@@ -21,8 +22,16 @@ function ScrollToTop() {
   }, [pathname]);
   return null;
 }
+
+//main 3 porjects imgs
 import jooba from './assets/imgs&svg/jooba.jpg';
 import k8sApp from './assets/imgs&svg/K8Sapp.png';
+
+
+//Project Images
+import jooba2 from './assets/projects-imgs/jooba2.png';
+import k8sApp2 from './assets/projects-imgs/K8S2.png';
+
 import shikom from './assets/imgs&svg/shikom.png';
 import walletApp from './assets/imgs&svg/walletApp.png';
 import heyDay from './assets/imgs&svg/HeyDay.png';
@@ -34,10 +43,10 @@ const projects = [
     subtitle: 'Mobile Finance',
     role: 'Full Stack Developer',
     year: '2024',
-    images: [walletApp, walletApp],
+    images: [walletApp],
+    githubUrl: 'https://github.com/yonatanhershko/wallet-app',
+    liveLabel: 'Coming Soon',
     outcome: 'Built a complete mobile wallet experience with real-time transaction tracking and intuitive financial management tools.',
-    challenge: 'Users needed a simple, clean way to manage personal finances without the complexity of traditional banking apps.',
-    approach: 'Designed a minimalist mobile-first interface with real-time data syncing, focusing on speed and usability across all interaction points.',
     technologies: ['React Native', 'Node.js', 'MongoDB'],
     highlights: [
       'Real-time transaction tracking',
@@ -51,15 +60,13 @@ const projects = [
     subtitle: 'Full Stack Engineer',
     role: 'Full Stack Engineer',
     year: '2024',
-    images: [jooba, jooba],
-    outcome: 'Delivered scalable, high-performance features that powered an AI-driven platform serving thousands of users.',
-    challenge: 'The platform needed to handle complex AI workflows while maintaining a fast, responsive user experience at scale.',
-    approach: 'Developed end-to-end features with a focus on performance optimization, clean architecture, and seamless integration between frontend and backend systems.',
-    technologies: ['React', 'Node.js', 'TypeScript', 'AI/ML Integration'],
+    images: [jooba2],
+    outcome: 'Built and scaled from scratch a cross-platform marketplace (iOS, Android, Web) enabling teenagers to create digital stores, trade products/services, and learn financial literacy in a safe environment.',
+    technologies: ['React Native', 'Python', 'Expo', 'GCP', 'SQL', 'Firebase'],
     highlights: [
-      'Scalable architecture for AI workloads',
-      'High-performance frontend optimization',
-      'End-to-end feature delivery',
+      'Cross-platform development with React Native for iOS & Android and Web ',
+      'Migrated infrastructure from Firebase to GCS and SQL',
+      'Delivered end-to-end features used by real users',
     ],
   },
   {
@@ -68,10 +75,9 @@ const projects = [
     subtitle: 'Frontend Developer',
     role: 'Frontend Developer',
     year: '2025',
-    images: [shikom, shikom],
+    images: [shikom],
+    liveUrl: 'https://shikum.mod.gov.il/',
     outcome: 'Contributed to a mission-critical governmental platform serving Israel\'s veterans and their families.',
-    challenge: 'A large-scale government system required modern, accessible, and maintainable frontend components to serve diverse user needs.',
-    approach: 'Built and maintained production-grade frontend components using Next.js and TypeScript, following strict governmental standards for accessibility and security.',
     technologies: ['Next.js', 'TypeScript', 'React', 'SCSS'],
     highlights: [
       'Large-scale governmental platform',
@@ -85,10 +91,10 @@ const projects = [
     subtitle: 'Cloud DevOps & Full Stack',
     role: 'DevOps & Full Stack Developer',
     year: '2025',
-    images: [k8sApp, k8sApp],
-    outcome: 'Deployed a fully containerized web application to the cloud, demonstrating end-to-end DevOps and development capabilities.',
-    challenge: 'Needed to demonstrate cloud-native deployment skills with a real application using industry-standard container orchestration.',
-    approach: 'Built a React frontend with Nginx reverse proxy and a Node.js + Express backend, containerized with Docker and orchestrated with Kubernetes on Fly.io.',
+    images: [k8sApp2],
+    githubUrl: 'https://github.com/yonatanhershko/yona-k8s-todo-app',
+    liveUrl: 'https://frontend-polished-brook-6642.fly.dev/',
+    outcome: 'Built and deployed a cloud-native Todo platform with Kubernetes orchestration, Dockerized services, and Fly.io infrastructure, emphasizing scalable deployment architecture.',
     technologies: ['Docker', 'Kubernetes', 'React', 'Node.js', 'Nginx', 'Fly.io'],
     highlights: [
       'Full Docker containerization',
@@ -102,10 +108,10 @@ const projects = [
     subtitle: 'Creative Project',
     role: 'Developer',
     year: '2024',
-    images: [heyDay, heyDay],
+    images: [heyDay],
+    githubUrl: 'https://github.com/yonatanhershko/HeyDay',
+    liveLabel: 'Coming Soon',
     outcome: 'Created an engaging digital experience that pushes creative boundaries with playful interactions and polished design.',
-    challenge: 'Wanted to explore creative web development beyond traditional application patterns.',
-    approach: 'Focused on expressive animations, unique visual design, and delightful micro-interactions to create a memorable user experience.',
     technologies: ['React', 'GSAP', 'CSS Animations'],
     highlights: [
       'Creative animation design',
