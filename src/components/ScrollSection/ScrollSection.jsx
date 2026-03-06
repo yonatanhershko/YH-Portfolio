@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import arrowIcon from '../../assets/imgs&svg/arrow.svg';
@@ -6,7 +7,17 @@ import './ScrollSection.scss';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const ScrollSection = ({ title, subtitle, description, year, imageSrc }) => {
+const handleNavigate = (navigate, slug) => {
+  if (!slug) return;
+  ScrollTrigger.getAll().forEach(t => t.kill());
+  window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
+  navigate(`/project/${slug}`);
+};
+
+const ScrollSection = ({ title, subtitle, description, year, imageSrc, slug }) => {
+  const navigate = useNavigate();
   const sectionRef = useRef(null);
   const contentRef = useRef(null);
   const titleRef = useRef(null);
@@ -60,24 +71,37 @@ const ScrollSection = ({ title, subtitle, description, year, imageSrc }) => {
     <section className="project-section" ref={sectionRef}>
       <div className="project-content" ref={contentRef}>
         
-        {/* Title Left */}
-        <h2 className="project-title" ref={titleRef}>{title}</h2>
-
-        {/* Image Center */}
-        <div className="project-image-container" ref={imageContainerRef}>
+        {/*Title + Image */}
+        <div className="project-left" ref={imageContainerRef}>
+          <h2 className="project-title" ref={titleRef}>{title}</h2>
+          <div className="project-image-container">
             {imageSrc ? (
                  <img src={imageSrc} alt={title} ref={imageRef}/>
             ) : (
                 <div className="image-placeholder" ref={imageRef}>
                 </div>
             )}
+          </div>
         </div>
 
-        {/* Info Right */}
+        {/*Info */}
         <div className="project-info" ref={infoRef}>
-             <img src={arrowIcon} alt="Arrow" className="arrow-icon" />
+             <img
+               src={arrowIcon}
+               alt="Arrow"
+               className="arrow-icon"
+               onClick={() => handleNavigate(navigate, slug)}
+             />
              <h3 className="subtitle">{subtitle}</h3>
              <p className="description">{description}</p>
+             {slug && (
+               <span
+                 className="mobile-check-link"
+                 onClick={() => handleNavigate(navigate, slug)}
+               >
+                 Check it out →
+               </span>
+             )}
              <div className="meta">
                 <span>{year}</span>
              </div>

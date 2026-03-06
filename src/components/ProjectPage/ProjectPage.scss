@@ -1,0 +1,326 @@
+@use "../../styles/variables" as *;
+
+.project-page {
+    min-height: 100vh;
+    background-color: $secondary-color;
+    color: $third-color;
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+
+    // ─── Back Button ────────────────────────────────────
+    .back-btn {
+        position: fixed;
+        top: 28px;
+        right: 36px;
+        z-index: 100;
+        background-color: $third-color;
+        color: $secondary-color;
+        border: none;
+        padding: 10px 22px;
+        border-radius: 30px;
+        font-family: $primary-font;
+        font-size: 0.85rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        letter-spacing: 0.3px;
+
+        &:hover {
+            background-color: $main-color;
+            color: $third-color;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .arrow-back {
+            transition: transform 0.3s ease;
+        }
+
+        &:hover .arrow-back {
+            transform: translateX(-3px);
+        }
+
+        @include mobile {
+            top: 16px;
+            right: 16px;
+            padding: 8px 16px;
+            font-size: 0.8rem;
+        }
+    }
+
+    // ─── Hero Section ───────────────────────────────────
+    .project-hero-section {
+        padding: 10rem 4rem 4rem;
+        max-width: 900px;
+
+        @include mobile {
+            padding: 7rem 1.5rem 2.5rem;
+        }
+
+        .hero-meta {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin-bottom: 1.5rem;
+
+            .meta-label {
+                font-family: $primary-font;
+                font-size: 0.85rem;
+                color: $main-color;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                font-weight: 500;
+            }
+
+            .meta-divider {
+                color: $main-color;
+                opacity: 0.5;
+            }
+        }
+
+        .hero-title {
+            font-family: $heading-font;
+            font-size: 5rem;
+            line-height: 1.05;
+            color: $third-color;
+            margin-bottom: 1rem;
+
+            @include mobile {
+                font-size: 2.8rem;
+            }
+        }
+
+        .hero-subtitle {
+            font-family: $secondary-heading-font;
+            font-size: 1.4rem;
+            color: $third-color;
+            opacity: 0.6;
+
+            @include mobile {
+                font-size: 1.1rem;
+            }
+        }
+    }
+
+    // ─── Outcome (Lead) ─────────────────────────────────
+    .outcome-section {
+        padding: 3rem 4rem 4rem;
+        border-top: 1px solid rgba($third-color, 0.1);
+
+        @include mobile {
+            padding: 2rem 1.5rem 3rem;
+        }
+
+        .outcome-inner {
+            max-width: 700px;
+        }
+
+        .outcome-text {
+            font-family: $primary-font;
+            font-size: 1.6rem;
+            line-height: 1.6;
+            color: $third-color;
+            font-weight: 400;
+
+            @include mobile {
+                font-size: 1.2rem;
+            }
+        }
+    }
+
+    // ─── Section Labels ─────────────────────────────────
+    .section-label {
+        display: block;
+        font-family: $primary-font;
+        font-size: 1rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: $main-color;
+        margin-bottom: 1rem;
+        font-weight: 600;
+    }
+
+    // ─── Full Image ─────────────────────────────────────
+    .full-image-section {
+        width: 100%;
+        padding: 0 4rem;
+        margin-bottom: 5rem;
+
+        @include mobile {
+            padding: 0 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .full-image {
+            width: 100%;
+            max-height: 550px;
+            object-fit: cover;
+            border-radius: 12px;
+            display: block;
+
+            @include mobile {
+                max-height: 250px;
+                border-radius: 8px;
+            }
+        }
+    }
+
+    // ─── Story Cards ────────────────────────────────────
+    .story-section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        padding: 0 4rem;
+        margin-bottom: 5rem;
+        max-width: 1100px;
+
+        @include mobile {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            padding: 0 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .story-card {
+            padding: 2.5rem;
+            background-color: rgba($third-color, 0.03);
+            border: 1px solid rgba($third-color, 0.08);
+            border-radius: 16px;
+            opacity: 0;
+
+            @include mobile {
+                padding: 1.5rem;
+            }
+
+            .story-text {
+                font-family: $primary-font;
+                font-size: 1.05rem;
+                line-height: 1.7;
+                color: $third-color;
+                opacity: 0.85;
+            }
+        }
+    }
+
+    // ─── Highlights ─────────────────────────────────────
+    .highlights-section {
+        padding: 0 4rem;
+        margin-bottom: 5rem;
+        max-width: 1100px;
+        opacity: 0;
+
+        @include mobile {
+            padding: 0 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+
+            @include tablet {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+        }
+
+        .highlight-item {
+            padding: 2rem 2rem 2rem 0;
+            border-top: 2px solid $main-color;
+            opacity: 0;
+
+            @include mobile {
+                padding: 1.2rem 0;
+            }
+
+            .highlight-number {
+                font-family: $heading-font;
+                font-size: 1.8rem;
+                color: $main-color;
+                display: block;
+                margin-bottom: 0.8rem;
+                opacity: 0.7;
+            }
+
+            .highlight-text {
+                font-family: $primary-font;
+                font-size: 1rem;
+                line-height: 1.5;
+                color: $third-color;
+                opacity: 0.85;
+            }
+        }
+    }
+
+    // ─── Tech Stack ─────────────────────────────────────
+    .tech-section {
+        padding: 0 4rem;
+        margin-bottom: 5rem;
+        max-width: 900px;
+        opacity: 0;
+
+        @include mobile {
+            padding: 0 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .tech-tag {
+            font-family: $primary-font;
+            font-size: 0.85rem;
+            padding: 8px 18px;
+            border-radius: 30px;
+            border: 1px solid rgba($third-color, 0.15);
+            color: $third-color;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            transition: all 0.3s ease;
+
+            &:hover {
+                background-color: $main-color;
+                color: $third-color;
+                border-color: $main-color;
+            }
+        }
+    }
+
+    // ─── Footer ─────────────────────────────────────────
+    .project-footer {
+        padding: 4rem;
+        border-top: 1px solid rgba($third-color, 0.1);
+        text-align: center;
+        opacity: 0;
+
+        @include mobile {
+            padding: 2.5rem 1.5rem;
+        }
+
+        .footer-back-btn {
+            background: none;
+            border: none;
+            font-family: $primary-font;
+            font-size: 1rem;
+            color: $main-color;
+            cursor: pointer;
+            padding: 12px 28px;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+
+            &:hover {
+                color: $third-color;
+                transform: translateX(-5px);
+            }
+        }
+    }
+}

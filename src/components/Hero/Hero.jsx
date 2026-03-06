@@ -1,17 +1,28 @@
 import { useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import walletApp from '../../assets/imgs&svg/walletApp.png';
 import shikom from '../../assets/imgs&svg/shikom.png';
 import k8sApp from '../../assets/imgs&svg/K8Sapp.png';
-import jooba from '../../assets/imgs&svg/jooba.png';
+import jooba from '../../assets/imgs&svg/jooba.jpg';
 import heyDay from '../../assets/imgs&svg/HeyDay.png';
 
 import "./Hero.scss";
 
 gsap.registerPlugin(ScrollTrigger);
 
+// Map image imports to their project slugs
+const heroItems = [
+  { img: walletApp, alt: "Wallet App", slug: "wallet-app", className: "item-1" },
+  { img: jooba, alt: "Jooba", slug: "jooba", className: "item-2" },
+  { img: shikom, alt: "Shikom", slug: "imod-rehabilitation", className: "item-3" },
+  { img: k8sApp, alt: "K8S App", slug: "k8s-todo", className: "item-4" },
+  { img: heyDay, alt: "HeyDay", slug: "heyday", className: "item-6" },
+];
+
 const Hero = ({ id }) => {
+  const navigate = useNavigate();
   const containerRef = useRef(null);
   const textRef = useRef(null);
   const itemsRef = useRef([]);
@@ -63,10 +74,6 @@ const Hero = ({ id }) => {
 
     // Items move away from center
     items.forEach((item, i) => {
-      // Simple logic: if it's on left, move left. If right, move right. Top/Bottom etc.
-      const xDir = i % 2 === 0 ? -1 : 1; // Left or Right
-      const yDir = i < 3 ? -1 : 1; // Top or Bottom roughly
-      
       const xMove = (i === 0 || i === 2 || i === 4) ? -200 : 200;
       const yMove = (i === 0 || i === 1) ? -150 : 150;
 
@@ -78,12 +85,11 @@ const Hero = ({ id }) => {
           scale: 1.5, 
           ease: "none",
         },
-        "<" // Sync with text animation
+        "<"
       );
     });
 
     return () => {
-        // Cleanup
         ScrollTrigger.getAll().forEach(t => t.kill());
     };
   }, []);
@@ -96,11 +102,20 @@ const Hero = ({ id }) => {
       </div>
 
       {/* Floating Project Images */}
-      <div className="floating-item item-1" ref={addToRefs}><img src={walletApp} alt="Wallet App" /></div>
-      <div className="floating-item item-2" ref={addToRefs}><img src={jooba} alt="Jooba" /></div>
-      <div className="floating-item item-3" ref={addToRefs}><img src={shikom} alt="Shikom" /></div>
-      <div className="floating-item item-4" ref={addToRefs}><img src={k8sApp} alt="K8S App" /></div>
-      <div className="floating-item item-6" ref={addToRefs}><img src={heyDay} alt="HeyDay" /></div>
+      {heroItems.map((item) => (
+        <div
+          key={item.slug}
+          className={`floating-item ${item.className}`}
+          ref={addToRefs}
+        >
+          <div
+            className="floating-item-inner"
+            onClick={() => navigate(`/project/${item.slug}`)}
+          >
+            <img src={item.img} alt={item.alt} />
+          </div>
+        </div>
+      ))}
     </div>
   );
 };

@@ -4,46 +4,40 @@
 .project-section {
     width: 100%;
     min-height: 100vh;
-    padding: 2rem;
-    margin-top: 6rem;
+    padding: 2rem 2rem 0 2rem;
+    margin-top: 4.5rem;
     position: relative;
 
     .project-content {
         width: 100%;
-        max-width: 1400px;
-        display: grid;
-        grid-template-columns: 1.5fr 1fr; 
+        max-width: 1700px;
+        display: flex;
         gap: 2rem;
-        align-items: center;
+        align-items: flex-end;
 
         @media (max-width: 1025px) {
-            display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
-            gap: 1.5rem;
+        }
+
+        .project-left {
+            @media (max-width: 1025px) {
+                width: 100%;
+                order: 1;
+            }
         }
 
         .project-title {
             font-family: $secondary-heading-font;
-            font-size: 4rem;
-            line-height: 0.9;
+            font-size: 3rem;
             color: $third-color;
-            word-wrap: break-word;
-            z-index: 10;
-
-            position: absolute;
-            left: 4%;
-            top: 30%;
-            transform: translate(-50%, -50%); 
-            width: 50%; 
             text-align: start;
+            margin-bottom: 6px;
 
             @media (max-width: 1025px) {
                 font-size: 2.5rem;
                 text-align: center;
-                position: static;
-                transform: none;
                 width: 100%;
                 order: 2;
             }
@@ -56,10 +50,10 @@
             justify-content: center;
             align-items: center;
             position: relative;
+
             @media (max-width: 1025px) {
                 height: 40vh;
                 aspect-ratio: 1 / 1;
-                order: 1;
             }
 
             .image-placeholder {
@@ -82,11 +76,11 @@
         }
 
         .project-info {
+            flex: 1;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
             align-items: flex-start;
-            height: 100%;
             padding-bottom: 2rem;
 
             @media (max-width: 1025px) {
@@ -99,6 +93,12 @@
                 width: 50px;
                 height: 50px;
                 margin-bottom: 1rem;
+                cursor: pointer;
+                transition: transform 0.3s ease;
+
+                &:hover {
+                    transform: scale(1.15);
+                }
 
                 @media (max-width: 1025px) {
                     display: none;
@@ -119,6 +119,26 @@
                 line-height: 1.5;
                 color: $third-color;
                 max-width: 300px;
+            }
+
+            .mobile-check-link {
+                display: none;
+
+                @media (max-width: 1025px) {
+                    display: inline-block;
+                    margin-top: 0.8rem;
+                    font-family: $primary-font;
+                    font-size: 0.8rem;
+                    font-weight: 700;
+                    color: $main-color;
+                    cursor: pointer;
+                    letter-spacing: 0.5px;
+                    transition: color 0.3s ease;
+
+                    &:hover {
+                        color: $third-color;
+                    }
+                }
             }
 
             .meta {
