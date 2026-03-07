@@ -106,6 +106,12 @@
                         width: 46px;
                         height: 46px;
                     }
+
+                    .arrow-mask-contact {
+                        background-color: var(--main-color);
+                        mask: url('../../assets/imgs&svg/arrow.svg') no-repeat center / contain;
+                        -webkit-mask: url('../../assets/imgs&svg/arrow.svg') no-repeat center / contain;
+                    }
                 }
             }
         }

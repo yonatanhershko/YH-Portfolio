@@ -1,12 +1,19 @@
 @use "./variables" as *;
 @use "./fonts";
 
+:root {
+    --main-color: #81B29A;
+    --secondary-color: #F4F1DE;
+    --third-color: #211C19;
+}
+
 *,
 *::before,
 *::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
 }
 
 html,

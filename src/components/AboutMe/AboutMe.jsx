@@ -61,19 +61,18 @@ const AboutMe = ({ id }) => {
                     <img src={me} alt="Me" />
                 </div>
                 <div className="text-container" ref={textRef}>
-                    <h2>hi, I'm yonatan</h2>
+                    <h2>Hi, I'm Yonatan</h2>
                     <p>
-                        I'm a software developer working across web, mobile, and interactive platforms. 
-                        My work focuses on creating seamless user experiences and robust architectures.
+                        I'm a developer who enjoys turning ideas into real products,<br />
+                        building clean and intuitive experiences backed by solid architecture.
                     </p>
-                    <p>
-                        I've worked with various startups and established companies, building projects 
-                        that range from complex dashboards to immersive portfolio sites.
-                    </p>
-                    
+                     <p>
+                        I've worked on web & mobile applications for startups and government platforms,
+                        collaborating with development teams,<br /> as well as on personal projects built from scratch.
+                     </p>
                      <div className="contact-info">
                         <h3>contact at:</h3>
-                        <a href="mailto:contact@yonatan.com">contact@yonatan.com</a>
+                        <a href="mailto:yonher8@gmail.com">contact@yonatan.com</a>
                     </div>
                 </div>
             </div>

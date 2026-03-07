@@ -4,15 +4,35 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import burgerMenuIcon from "../../assets/imgs&svg/burger-menu.svg";
+import themeCircleImg from "../../assets/imgs&svg/themeCircle.png";
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
+const themes = [
+    { main: '#81B29A', secondary: '#F4F1DE', third: '#211C19' },
+    { main: '#E07A5F', secondary: '#F8FAFC', third: '#264653' },
+    { main: '#E9C46A', secondary: '#FAF9F6', third: '#264653' },
+    { main: '#A3B18A', secondary: '#1A1C18', third: '#CCD6F6' },
+];
+
+function applyTheme(index) {
+    const theme = themes[index];
+    const root = document.documentElement;
+    root.style.setProperty('--main-color', theme.main);
+    root.style.setProperty('--secondary-color', theme.secondary);
+    root.style.setProperty('--third-color', theme.third);
+}
 
 export default function Header() {
     const [activeSection, setActiveSection] = useState("hero");
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const [isDarkBg, setIsDarkBg] = useState(false);
+    const [themeIndex, setThemeIndex] = useState(0);
+    const circleRef = useRef(null);
+    const mobileCircleRef = useRef(null);
     const isManualScroll = useRef(false);
+    const isAnimating = useRef(false);
 
     const sections = [
         { id: "hero", label: "Home" },
@@ -20,6 +40,47 @@ export default function Header() {
         { id: "portfolio-section", label: "Work" },
         { id: "contact", label: "Contact" },
     ];
+
+    // Load saved theme on mount
+    useEffect(() => {
+        const saved = localStorage.getItem('theme');
+        if (saved !== null) {
+            const idx = parseInt(saved, 10);
+            if (idx >= 0 && idx < themes.length) {
+                setThemeIndex(idx);
+                applyTheme(idx);
+                // Set initial rotation to match saved theme (no animation)
+                const rotation = idx * -90;
+                if (circleRef.current) gsap.set(circleRef.current, { rotation });
+                if (mobileCircleRef.current) gsap.set(mobileCircleRef.current, { rotation });
+            }
+        }
+    }, []);
+
+    const cycleTheme = () => {
+        if (isAnimating.current) return;
+        isAnimating.current = true;
+
+        const nextIndex = (themeIndex + 1) % themes.length;
+        setThemeIndex(nextIndex);
+        applyTheme(nextIndex);
+        localStorage.setItem('theme', nextIndex.toString());
+
+        // Rotation animation
+        const targets = [circleRef.current, mobileCircleRef.current].filter(Boolean);
+        if (targets.length) {
+            gsap.to(targets, {
+                rotation: '-=90',
+                duration: 0.5,
+                ease: 'back.out(1.7)',
+                onComplete: () => {
+                    setTimeout(() => { isAnimating.current = false; }, 300);
+                },
+            });
+        } else {
+            setTimeout(() => { isAnimating.current = false; }, 300);
+        }
+    };
 
     const scrollToSection = (id) => {
         const element = document.getElementById(id);
@@ -95,6 +156,14 @@ export default function Header() {
             </div>
 
             <nav className="desktop-nav">
+                <img
+                    className="theme-circle"
+                    ref={circleRef}
+                    src={themeCircleImg}
+                    alt="Change theme"
+                    onClick={cycleTheme}
+                    title="Change theme"
+                />
                 {sections.map((section) => (
                     <div
                         key={section.id}
@@ -115,6 +184,14 @@ export default function Header() {
             </div>
 
             <div className={`mobile-menu-overlay ${isMenuOpen ? "open" : ""}`}>
+                <img
+                    className="theme-circle mobile-theme-circle"
+                    ref={mobileCircleRef}
+                    src={themeCircleImg}
+                    alt="Change theme"
+                    onClick={cycleTheme}
+                    title="Change theme"
+                />
                 {sections.map((section) => (
                     <div
                         key={section.id}

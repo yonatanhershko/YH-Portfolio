@@ -1,8 +1,7 @@
-$main-color: #81B29A;
-$secondary-color: #F4F1DE ;
-$third-color: #211C19;
-
-
+// Colors — mapped to CSS custom properties for runtime theming
+$main-color: var(--main-color);
+$secondary-color: var(--secondary-color);
+$third-color: var(--third-color);
 
 $primary-font: "Rubik-Regular";
 $heading-font: "Rubik-Bold";

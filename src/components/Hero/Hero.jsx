@@ -12,7 +12,6 @@ import "./Hero.scss";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Map image imports to their project slugs
 const heroItems = [
   { img: walletApp, alt: "Wallet App", slug: "wallet-app", className: "item-1" },
   { img: jooba, alt: "Jooba", slug: "jooba", className: "item-2" },
@@ -27,7 +26,7 @@ const Hero = ({ id }) => {
   const textRef = useRef(null);
   const itemsRef = useRef([]);
 
-  // Helper to add refs to the array
+  //Add refs to the array
   const addToRefs = (el) => {
     if (el && !itemsRef.current.includes(el)) {
       itemsRef.current.push(el);
@@ -101,7 +100,6 @@ const Hero = ({ id }) => {
         <h2>Software Developer</h2>
       </div>
 
-      {/* Floating Project Images */}
       {heroItems.map((item) => (
         <div
           key={item.slug}

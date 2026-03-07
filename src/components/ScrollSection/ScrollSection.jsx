@@ -2,16 +2,12 @@ import { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import arrowIcon from '../../assets/imgs&svg/arrow.svg';
 import './ScrollSection.scss';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const handleNavigate = (navigate, slug) => {
   if (!slug) return;
-  ScrollTrigger.getAll().forEach(t => t.kill());
-  window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-  document.documentElement.scrollTop = 0;
   document.body.scrollTop = 0;
   navigate(`/project/${slug}`);
 };
@@ -42,7 +38,6 @@ const ScrollSection = ({ title, subtitle, description, year, imageSrc, slug }) =
       },
     });
 
-    // Image & Subtitle (Info) Animation: Scale, Fade, Slide
     tl.fromTo([imageContainerRef.current, infoRef.current],
       {
         x: -100,
@@ -58,7 +53,6 @@ const ScrollSection = ({ title, subtitle, description, year, imageSrc, slug }) =
       }
     );
 
-    // Title Animation: Slide Only (adding opacity for clean entry)
     tl.fromTo(titleRef.current,
         { x: 100, opacity: 0 },
         { x: 0, opacity: 1, duration: 0.8, ease: 'power2.out' },
@@ -71,7 +65,6 @@ const ScrollSection = ({ title, subtitle, description, year, imageSrc, slug }) =
     <section className="project-section" ref={sectionRef}>
       <div className="project-content" ref={contentRef}>
         
-        {/*Title + Image */}
         <div className="project-left" ref={imageContainerRef}>
           <h2 className="project-title" ref={titleRef}>{title}</h2>
           <div className="project-image-container">
@@ -84,12 +77,9 @@ const ScrollSection = ({ title, subtitle, description, year, imageSrc, slug }) =
           </div>
         </div>
 
-        {/*Info */}
         <div className="project-info" ref={infoRef}>
-             <img
-               src={arrowIcon}
-               alt="Arrow"
-               className="arrow-icon"
+             <div
+               className="arrow-mask"
                onClick={() => handleNavigate(navigate, slug)}
              />
              <h3 className="subtitle">{subtitle}</h3>

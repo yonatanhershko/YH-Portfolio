@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import GlobalStyle from "./components/GlobalStyle/GlobalStyle";
 import ScrollSection from "./components/ScrollSection/ScrollSection";
 import Hero from "./components/Hero/Hero";
@@ -8,6 +8,7 @@ import "./styles/App.scss";
 import Contact from "./components/Contact/Contact";
 import Header from "./components/Header/Header";
 import ProjectPage from "./components/ProjectPage/ProjectPage";
+import Loader from "./components/Loader/Loader";
 
 
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -23,31 +24,31 @@ function ScrollToTop() {
   return null;
 }
 
-//main 3 porjects imgs
+//Main 3 projects imgs
 import jooba from './assets/imgs&svg/jooba.jpg';
 import k8sApp from './assets/imgs&svg/K8Sapp.png';
+import shikom from './assets/imgs&svg/shikom.png';
 
 
 //Project Images
 import jooba2 from './assets/projects-imgs/jooba2.png';
 import k8sApp2 from './assets/projects-imgs/K8S2.png';
+import shikom2 from './assets/projects-imgs/shikom2.png';
+import heyDay from './assets/projects-imgs/HeyDay2.png';
+import walletApp from './assets/projects-imgs/wallet2.png';
 
-import shikom from './assets/imgs&svg/shikom.png';
-import walletApp from './assets/imgs&svg/walletApp.png';
-import heyDay from './assets/imgs&svg/HeyDay.png';
 
 const projects = [
   {
     slug: 'wallet-app',
-    title: 'Wallet App',
-    subtitle: 'Mobile Finance',
-    role: 'Full Stack Developer',
-    year: '2024',
+    title: 'CashMate',
+    role: 'Mobile App Developer',
+    year: '2026',
     images: [walletApp],
     githubUrl: 'https://github.com/yonatanhershko/wallet-app',
     liveLabel: 'Coming Soon',
-    outcome: 'Built a complete mobile wallet experience with real-time transaction tracking and intuitive financial management tools.',
-    technologies: ['React Native', 'Node.js', 'MongoDB'],
+    outcome: 'A digital wallet app built from scratch that helps users track income, expenses, and recurring subscriptions with a simple and intuitive mobile experience.',
+    technologies: ['React Native', 'Expo', 'Firebase', 'Xcode', 'Android Studio'],
     highlights: [
       'Real-time transaction tracking',
       'Intuitive budget visualization',
@@ -57,8 +58,7 @@ const projects = [
   {
     slug: 'jooba',
     title: 'Jooba AI',
-    subtitle: 'Full Stack Engineer',
-    role: 'Full Stack Engineer',
+    role: 'Full Stack Developer',
     year: '2024',
     images: [jooba2],
     outcome: 'Built and scaled from scratch a cross-platform marketplace (iOS, Android, Web) enabling teenagers to create digital stores, trade products/services, and learn financial literacy in a safe environment.',
@@ -72,24 +72,22 @@ const projects = [
   {
     slug: 'imod-rehabilitation',
     title: 'IMOD Rehabilitation',
-    subtitle: 'Frontend Developer',
     role: 'Frontend Developer',
-    year: '2025',
-    images: [shikom],
+    year: '2026',
+    images: [shikom2],
     liveUrl: 'https://shikum.mod.gov.il/',
     outcome: 'Contributed to a mission-critical governmental platform serving Israel\'s veterans and their families.',
-    technologies: ['Next.js', 'TypeScript', 'React', 'SCSS'],
+    technologies: ['Next.js','Styled-Components','TypeScript', 'Umbraco Headless'],
     highlights: [
       'Large-scale governmental platform',
       'Accessibility-first component design',
-      'Production-grade TypeScript architecture',
+      'Optimized content delivery and SEO',
     ],
   },
   {
     slug: 'k8s-todo',
     title: 'K8s Todo List',
-    subtitle: 'Cloud DevOps & Full Stack',
-    role: 'DevOps & Full Stack Developer',
+    role: 'Cloud DevOps & Full Stack',
     year: '2025',
     images: [k8sApp2],
     githubUrl: 'https://github.com/yonatanhershko/yona-k8s-todo-app',
@@ -105,18 +103,16 @@ const projects = [
   {
     slug: 'heyday',
     title: 'HeyDay',
-    subtitle: 'Creative Project',
-    role: 'Developer',
-    year: '2024',
+    role: 'Full Stack Developer',
+    year: '2025',
     images: [heyDay],
     githubUrl: 'https://github.com/yonatanhershko/HeyDay',
-    liveLabel: 'Coming Soon',
-    outcome: 'Created an engaging digital experience that pushes creative boundaries with playful interactions and polished design.',
-    technologies: ['React', 'GSAP', 'CSS Animations'],
+    outcome: 'A mobile wellness app developed from scratch, helps users track their daily mental and physical state through simple and fun check-ins, streaks and AI generated insights with clean and modern UI/UX.',
+    technologies: ['React Native', 'Expo', 'Firebase', 'Xcode', 'Android Studio'],
     highlights: [
-      'Creative animation design',
-      'Expressive micro-interactions',
-      'Unique visual identity',
+      'Full ownership',
+      'system architecture',
+      'AI-generated health insights',
     ],
   },
 ];
@@ -151,7 +147,7 @@ function HomePage() {
           title="IMOD Rehabilitation"
           subtitle="Frontend Developer"
           description="Worked on a large-scale governmental platform for Israel's Ministry of Defense – Rehabilitation Department, building and maintaining frontend components with Next.js and TypeScript."
-          year="2025"
+          year="2026"
           imageSrc={shikom}
           slug="imod-rehabilitation"
         />
@@ -163,9 +159,32 @@ function HomePage() {
 }
 
 function App() {
+  const [loading, setLoading] = useState(true);
+  const [fading, setFading] = useState(false);
+
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+
+    const dismiss = () => {
+      setFading(true);
+      setTimeout(() => {
+        setLoading(false);
+        document.body.style.overflow = '';
+      }, 500);
+    };
+
+    if (document.readyState === 'complete') {
+      dismiss();
+    } else {
+      window.addEventListener('load', dismiss);
+      return () => window.removeEventListener('load', dismiss);
+    }
+  }, []);
+
   return (
     <BrowserRouter>
       <ScrollToTop />
+      {loading && <Loader fading={fading} />}
       <GlobalStyle>
         <div className="app-container">
           <Routes>

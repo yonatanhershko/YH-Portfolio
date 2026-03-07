@@ -20,12 +20,6 @@ const ProjectPage = ({ projects }) => {
 
     const project = projects.find(p => p.slug === slug);
 
-    const addToStoryCards = (el) => {
-        if (el && !storyCardsRef.current.includes(el)) {
-            storyCardsRef.current.push(el);
-        }
-    };
-
     useEffect(() => {
         window.scrollTo(0, 0);
         storyCardsRef.current = [];
@@ -119,20 +113,21 @@ const ProjectPage = ({ projects }) => {
     return (
         <div className="project-page" ref={pageRef}>
             {/* Fixed Back Button */}
-            <button className="back-btn" ref={backBtnRef} onClick={() => navigate('/')}>
+            <button className="back-btn" ref={backBtnRef} onClick={() => {
+                document.body.scrollTop = 0;
+                navigate('/');
+            }}>
                 <span className="arrow-back">←</span> Back
             </button>
 
-            {/* Hero — Title + Meta */}
+            {/* Hero*/}
             <div className="project-hero-section" ref={heroRef}>
+                <h1 className="hero-title">{project.title}</h1>
                 <div className="hero-meta">
                     <span className="meta-label">{project.role}</span>
                     <span className="meta-divider">·</span>
                     <span className="meta-label">{project.year}</span>
                 </div>
-                <h1 className="hero-title">{project.title}</h1>
-                <p className="hero-subtitle">{project.subtitle}</p>
-
                 {(project.githubUrl || project.liveUrl || project.liveLabel) && (
                     <div className="project-links">
                         {project.githubUrl && (

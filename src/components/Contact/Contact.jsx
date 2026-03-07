@@ -3,7 +3,6 @@ import "./Contact.scss";
 import githubIcon from "../../assets/imgs&svg/github.svg";
 import linkedinIcon from "../../assets/imgs&svg/linkedin.svg";
 import emailIcon from "../../assets/imgs&svg/email.svg";
-import arrowIcon from "../../assets/imgs&svg/arrow.svg";
 import gsap from "gsap";
 import me2 from '../../assets/imgs&svg/me2.png';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -120,9 +119,8 @@ export default function Contact({ id }) {
                                     <img src={social.icon} alt={social.alt} />
                                 </div>
                                 <div className="icon-wrapper">
-                                    <img
-                                        src={arrowIcon}
-                                        alt="Go"
+                                    <div
+                                        className="arrow-mask-contact"
                                         style={{
                                             width: "32px",
                                             height: "32px",

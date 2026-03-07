@@ -16,7 +16,7 @@
     background: transparent;
 
     &.scrolled {
-        background: rgba(129, 178, 154, 0.85);
+        background: color-mix(in srgb, var(--main-color) 85%, transparent);
         backdrop-filter: blur(10px);
         box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     }
@@ -37,9 +37,24 @@
     .desktop-nav {
         display: flex;
         gap: 40px;
+        align-items: center;
 
         @include mobile {
             display: none;
+        }
+
+        .theme-circle {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.3s ease !important;
+            flex-shrink: 0;
+            border: 2px solid color-mix(in srgb, var(--third-color) 15%, transparent);
+
+            &:hover {
+                transform: scale(1.2);
+            }
         }
 
         .nav-link {
@@ -113,6 +128,19 @@
 
         &.open {
             transform: translateY(0);
+        }
+
+        .mobile-theme-circle {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.3s ease !important;
+            border: 2px solid color-mix(in srgb, var(--third-color) 15%, transparent);
+
+            &:hover {
+                transform: scale(1.2);
+            }
         }
 
         .mobile-nav-link {
