@@ -5,6 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import burgerMenuIcon from "../../assets/imgs&svg/burger-menu.svg";
 import themeCircleImg from "../../assets/imgs&svg/themeCircle.png";
+import { track } from "@vercel/analytics";
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
@@ -37,7 +38,7 @@ export default function Header() {
     const sections = [
         { id: "hero", label: "Home" },
         { id: "about", label: "About" },
-        { id: "portfolio-section", label: "Work" },
+        { id: "portfolio-section", label: "Works" },
         { id: "contact", label: "Contact" },
     ];
 
@@ -65,6 +66,7 @@ export default function Header() {
         setThemeIndex(nextIndex);
         applyTheme(nextIndex);
         localStorage.setItem('theme', nextIndex.toString());
+        track('Theme Changed', { themeIndex: nextIndex });
 
         // Rotation animation
         const targets = [circleRef.current, mobileCircleRef.current].filter(Boolean);

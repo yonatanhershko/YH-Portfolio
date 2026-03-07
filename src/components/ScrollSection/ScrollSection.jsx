@@ -2,12 +2,14 @@ import { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { track } from "@vercel/analytics";
 import './ScrollSection.scss';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const handleNavigate = (navigate, slug) => {
   if (!slug) return;
+  track('Project Clicked', { project: slug, section: 'works' });
   document.body.scrollTop = 0;
   navigate(`/project/${slug}`);
 };

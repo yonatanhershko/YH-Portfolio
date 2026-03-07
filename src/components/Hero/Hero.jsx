@@ -7,6 +7,7 @@ import shikom from '../../assets/imgs&svg/shikom.png';
 import k8sApp from '../../assets/imgs&svg/K8Sapp.png';
 import jooba from '../../assets/imgs&svg/jooba.jpg';
 import heyDay from '../../assets/imgs&svg/HeyDay.png';
+import { track } from "@vercel/analytics";
 
 import "./Hero.scss";
 
@@ -108,7 +109,10 @@ const Hero = ({ id }) => {
         >
           <div
             className="floating-item-inner"
-            onClick={() => navigate(`/project/${item.slug}`)}
+            onClick={() => {
+              track('Project Clicked', { project: item.slug, section: 'hero' });
+              navigate(`/project/${item.slug}`);
+            }}
           >
             <img src={item.img} alt={item.alt} />
           </div>
