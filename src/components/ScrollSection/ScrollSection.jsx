@@ -33,7 +33,7 @@ const ScrollSection = ({ title, subtitle, description, year, imageSrc, slug }) =
         trigger: section,
         start: 'top 60%',
         end: 'bottom 40%',
-        toggleActions: 'play reverse play reverse',
+        toggleActions: 'play none none reverse',
         scrub: false,
       },
     });

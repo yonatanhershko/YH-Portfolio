@@ -40,14 +40,14 @@ export default function Contact({ id }) {
                 scrollTrigger: {
                     trigger: contactRef.current,
                     start: "top 80%", // Start when top of section hits 80% of viewport
-                    end: "bottom bottom",
+                    once: true,
                 },
             });
 
             // 1. Animate lines appearing
             tl.to(".bg-line", {
                 scaleX: 1,
-                duration: 0.6,
+                duration: 0.4,
                 stagger: 0.1, // 0.1s wait between each line
                 ease: "circ.out",
             })
@@ -60,7 +60,7 @@ export default function Contact({ id }) {
                         duration: 0.8,
                         ease: "power2.out",
                     },
-                    ">+=0.3", // 1 second after lines finish
+                    ">+=0.2", 
                 );
         }, contactRef);
 
