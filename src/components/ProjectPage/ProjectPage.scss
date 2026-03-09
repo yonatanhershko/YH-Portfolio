@@ -11,12 +11,12 @@
     .back-btn {
         position: fixed;
         top: 28px;
-        right: 36px;
+        left: 36px;
         z-index: 100;
         background-color: $third-color;
         color: $secondary-color;
         border: none;
-        padding: 10px 22px;
+        padding: 14px 22px;
         border-radius: 30px;
         font-family: $primary-font;
         font-size: 0.85rem;
@@ -46,7 +46,7 @@
 
         @include mobile {
             top: 16px;
-            right: 16px;
+            left: 16px;
             padding: 8px 16px;
             font-size: 0.8rem;
         }

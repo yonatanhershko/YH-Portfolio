@@ -108,7 +108,7 @@
                     }
 
                     .arrow-mask-contact {
-                        background-color: var(--main-color);
+                        background-color: $third-color;
                         mask: url('../../assets/imgs&svg/arrow.svg') no-repeat center / contain;
                         -webkit-mask: url('../../assets/imgs&svg/arrow.svg') no-repeat center / contain;
                     }

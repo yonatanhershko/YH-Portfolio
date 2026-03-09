@@ -24,18 +24,20 @@ function ScrollToTop() {
   return null;
 }
 
-//Main 3 projects imgs
+//Main projects imgs
 import jooba from './assets/imgs&svg/jooba.jpg';
 import k8sApp from './assets/imgs&svg/K8Sapp.png';
 import shikom from './assets/imgs&svg/shikom.png';
+import heyDay from './assets/imgs&svg/heyday.png';
+import walletApp from './assets/imgs&svg/walletApp.png';
 
 
 //Project Images
 import jooba2 from './assets/projects-imgs/jooba2.png';
 import k8sApp2 from './assets/projects-imgs/K8S2.png';
 import shikom2 from './assets/projects-imgs/shikom2.png';
-import heyDay from './assets/projects-imgs/HeyDay2.png';
-import walletApp from './assets/projects-imgs/wallet2.png';
+import heyDay2 from './assets/projects-imgs/HeyDay2.png';
+import walletApp2 from './assets/projects-imgs/wallet2.png';
 
 
 const projects = [
@@ -44,7 +46,7 @@ const projects = [
     title: 'CashMate',
     role: 'Mobile App Developer',
     year: '2026',
-    images: [walletApp],
+    images: [walletApp2],
     githubUrl: 'https://github.com/yonatanhershko/wallet-app',
     liveLabel: 'Coming Soon',
     outcome: 'A digital wallet app built from scratch that helps users track income, expenses, and recurring subscriptions with a simple and intuitive mobile experience.',
@@ -105,7 +107,7 @@ const projects = [
     title: 'HeyDay',
     role: 'Full Stack Developer',
     year: '2025',
-    images: [heyDay],
+    images: [heyDay2],
     githubUrl: 'https://github.com/yonatanhershko/HeyDay',
     outcome: 'A mobile wellness app developed from scratch, helps users track their daily mental and physical state through simple and fun check-ins, streaks and AI generated insights with clean and modern UI/UX.',
     technologies: ['React Native', 'Expo', 'Firebase', 'Xcode', 'Android Studio'],
@@ -150,6 +152,24 @@ function HomePage() {
           year="2026"
           imageSrc={shikom}
           slug="imod-rehabilitation"
+        />
+
+        <ScrollSection
+          title="HeyDay"
+          subtitle="Full Stack Developer"
+          description="A mobile wellness app developed from scratch, helps users track their daily mental and physical state through simple and fun check-ins, streaks and AI generated insights with clean and modern UI/UX."
+          year="2025"
+          imageSrc={heyDay}
+          slug="heyday"
+        />
+
+        <ScrollSection
+          title="Wallet App"
+          subtitle="Mobile App Developer"
+          description="A mobile wallet app built from scratch that helps users track income, expenses, and recurring subscriptions with a simple and intuitive mobile experience."
+          year="2026"
+          imageSrc={walletApp}
+          slug="wallet-app"
         />
       </section>
 
