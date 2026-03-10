@@ -28,9 +28,8 @@ function ScrollToTop() {
 import jooba from './assets/imgs&svg/jooba.jpg';
 import k8sApp from './assets/imgs&svg/K8Sapp.png';
 import shikom from './assets/imgs&svg/shikom.png';
-import heyDay from './assets/imgs&svg/heyday.png';
+import heyDay from './assets/imgs&svg/HeyDay.png';
 import walletApp from './assets/imgs&svg/walletApp.png';
-
 
 //Project Images
 import jooba2 from './assets/projects-imgs/jooba2.png';
